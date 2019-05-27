@@ -25,6 +25,11 @@ const TodoForm = () => {
     });
   };
 
+  const onClear = async e => {
+    const res = await axios.delete('http://localhost:3200/todo/deleteTodos')
+    console.log(res)
+  }
+
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -32,6 +37,7 @@ const TodoForm = () => {
         <input onChange={onBodyChange} type="text" placeholder="Body" />
         <input type="submit" />
       </form>
+      <button onClick={onClear}>Clear</button>
     </div>
   );
 };

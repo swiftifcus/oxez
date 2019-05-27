@@ -45,5 +45,21 @@ module.exports = router => {
     });
   });
 
+  router.delete('/deleteTodos', (req, res) => {
+    Todo.deleteMany({}, err => {
+      if (err) {
+        res.json({
+          success: false,
+          message: err,
+        });
+      } else {
+        res.json({
+          success: true,
+          message: 'Deleted all',
+        });
+      }
+    });
+  });
+
   return router;
 };
